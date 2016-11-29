@@ -37,15 +37,18 @@
     ]);
     ?>
 <script>
-    tinymce.init({
-        selector: ".editor",
-        statusbar: false,
-        setup: function (editor) {
-            editor.on('change', function () {
-                tinymce.triggerSave();
-            });
-        }
-    });
+    DIR = "/".<?php DIR ?>."/";
+    // $(document).ready(function(){
+    //     tinymce.init({
+    //         selector: ".editor",
+    //         statusbar: false,
+    //         setup: function (editor) {
+    //             editor.on('change', function () {
+    //                 tinymce.triggerSave();
+    //             });
+    //         }
+    //     });
+    // });
 </script>
 </head>
 <body>

@@ -19,20 +19,23 @@ class Config
          */
         ob_start();
 
+        //name
+        define('NAME', 'library');
+
         /**
          * Define the complete site URL.
          */
-        define('SITEURL', 'http://localhost/ewsd2016/');
+        define('SITEURL', 'http://localhost/'.NAME.'/');
 
         /**
          * Define relative base path.
          */
-        define('DIR', '/ewsd2016/');
+        define('DIR', '/'.NAME.'/');
 
         /**
          * Define Dashboard path.
          */
-        define('ADMIN_DIR', '/ewsd2016/admin/');
+        define('ADMIN_DIR', '/'.NAME.'/admin/');
 
         /**
          * Set the Application Router.
@@ -94,7 +97,7 @@ class Config
         /**
          * Database name.
          */
-        define('DB_NAME', 'university');
+        define('DB_NAME', 'librarian');
 
         /**
          * Database username.
@@ -142,13 +145,9 @@ class Config
          */
         define('SIZEIMAGE', 2048000);
 
-        /**
-         * ENTRY_STATUS
-         */
-        define('STATUS_APPROVED','approved');
-        define('STATUS_NON_APPROVED','non_approved');
-        define('STATUS_IS_REVIEWED','is_reviewed');
-        define('STATUS_CLOSE','closed');
+        // Limit Roles
+        define ("ROLES", serialize (array ("admin", "librarian","student")));
+        //$my_fruits = unserialize (FRUITS);
 
         /**
          * Start sessions.

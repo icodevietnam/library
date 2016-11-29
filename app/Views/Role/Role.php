@@ -44,7 +44,12 @@
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Code</label>
 						<div class="col-sm-10">
-						<input type="text" class="code form-control" name="code" >
+							<select class="code form-control" name="code">
+								<?php 
+									foreach ($roleArr as $value) { ?>
+										<option value="<?= $value?>" ><?= $value?></option>
+								<?php } ?>
+							</select>
 						</div>
 					</div>
 					</div>
@@ -86,7 +91,12 @@
 								<div class="form-group">
 									<label for="code" class="col-sm-2 control-label">Code</label>
 									<div class="col-sm-10">
-									<input type="text" class="code form-control" name="code" >
+										<select class="code form-control" name="code">
+											<?php 
+											foreach ($roleArr as $value) { ?>
+												<option value="<?= $value ?>" > <?=$value?> </option>
+											<?php } ?>
+										</select>
 									</div>
 								</div>
 				</div>

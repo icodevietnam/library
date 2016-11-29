@@ -11,7 +11,7 @@ $(function() {
 			},code :{
 				required:true,
 				remote : {
-					url : '/ewsd2016/role/checkCode',
+					url : '/library/role/checkCode',
 					type : 'GET',
 					data : {
 						code : function(){
@@ -63,7 +63,7 @@ $(function() {
 function displayTable() {
 	var dataItems = [];
 	$.ajax({
-		url : "/ewsd2016/role/getAll",
+		url : DIR +"role/getAll",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {
@@ -107,7 +107,7 @@ function displayTable() {
 
 function getItem(id) {
 	$.ajax({
-		url : "/ewsd2016/role/get",
+		url : DIR +"role/get",
 		type : "GET",
 		data : {
 			itemId : id
@@ -133,7 +133,7 @@ function getItem(id) {
 function deleteItem(id) {
 	if (confirm("Are you sure you want to proceed?") == true) {
 		$.ajax({
-			url : "/ewsd2016/role/delete",
+			url : DIR +"role/delete",
 			type : "POST",
 			data : {
 				itemId : id
@@ -155,7 +155,7 @@ function update() {
 		var description = $("#updateItemForm .description").val();
 		var code = $("#updateItemForm .code").val();
 		$.ajax({
-			url : "/ewsd2016/role/update",
+			url : DIR +"role/update",
 			type : "POST",
 			data : {
 				id : id,
@@ -183,7 +183,7 @@ function insertItem() {
 		var description = $("#newItemForm .description").val();
 		var code = $("#newItemForm .code").val();
 		$.ajax({
-			url : "/ewsd2016/role/add",
+			url : DIR +"role/add",
 			type : "POST",
 			data : {
 				name : name,

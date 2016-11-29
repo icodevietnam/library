@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Core\Model;
 
-class Roles extends Model
+class Role extends Model
 {
 	
 	function __construct()

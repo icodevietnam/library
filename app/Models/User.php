@@ -3,7 +3,7 @@ namespace app\Models;
 
 use Core\Model;
 
-class Users extends Model
+class User extends Model
 {
 	
 	function __construct()

@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Core\Model;
 
-class Files extends Model
+class File extends Model
 {
 
 	function __construct()
