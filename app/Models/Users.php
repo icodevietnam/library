@@ -3,7 +3,7 @@ namespace app\Models;
 
 use Core\Model;
 
-class User extends Model
+class Users extends Model
 {
 	
 	function __construct()
@@ -69,6 +69,21 @@ class User extends Model
 		}
 	}
 
+	function checkStudentCard($studentCard){
+		$data = null;
+		try {
+			$data = $this->db->select("SELECT * FROM ".PREFIX."user WHERE studentCard =:studentCard",array(':studentCard' => $studentCard));
+			if(count($data) >= 1){
+				return false;
+			}else{
+				return true;
+			}
+		} catch (Exception $e) {
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return true;
+		}
+	}
+
 	function checkPassword($password,$id){
 		$data = null;
 		try {
@@ -114,22 +129,6 @@ class User extends Model
 		return $data;
 	}
 
-	function getCoordinatorWithoutManage($code,$count){
-		$data = null;
-		try {
-			$query = " SELECT U.*, R.id as roleId, R.name as roleName FROM ".PREFIX."user U, ".PREFIX." role R  WHERE R.code =:code AND U.role = R.id ";
-			if($count > 0){
-				$query.= " AND U.id NOT IN ( SELECT mkt_coor FROM faculty )";
-			}
-			$data = $this->db->select($query,array(':code' => $code));
-		} catch (Exception $e) {
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
-		return $data;
-	}
-
-
-
 	function update($data,$where){
 		try {
 			$this->db->update(PREFIX."user",$data,$where);
@@ -143,11 +142,11 @@ class User extends Model
 	function loginConsole($username,$password){
 		$data = null;
 		try {
-			$data = $this->db->select("SELECT U.*, R.name as 'roleName', R.code as 'roleCode' FROM ".PREFIX."user U, ".PREFIX."role R  WHERE U.username = :username AND U.password = :password AND U.role = R.id AND (R.code='admin' OR R.code = 'mkmng' OR R.code = 'mkcoor') ",array(':username' => $username,':password' => $password));
+			$data = $this->db->select("SELECT U.*, R.name as 'roleName', R.code as 'roleCode' FROM ".PREFIX."user U, ".PREFIX."role R  WHERE U.username = :username AND U.password = :password AND U.role = R.id AND (R.code='admin' OR R.code = 'librarian') ",array(':username' => $username,':password' => $password));
 		} catch (Exception $e) {
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-		return $data;
+		return $data[0];
 	}
 
 	function login($username,$password){
@@ -157,7 +156,7 @@ class User extends Model
 		} catch (Exception $e) {
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-		return $data;
+		return $data[0];
 	}
 
 }

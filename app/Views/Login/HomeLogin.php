@@ -25,7 +25,7 @@
 	                        		</div>
 	                            </div>
 	                            <div class="form-bottom">
-				                    <form id="SignInForm" role="form" action="/ewsd2016/login" method="post" class="login-form">
+				                    <form id="SignInForm" role="form" action=DIR +"login" method="post" class="login-form">
 				                    	<div class="form-group">
 				                    		<label class="sr-only" for="username">Username</label>
 				                        	<input type="text" name="username" placeholder="Username..." class="username form-control" id="form-username">
@@ -92,7 +92,7 @@
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-email">Avatar</label>
 				                        	<input type="file" name="avatar" placeholder="Avatar..." class="avatar form-control" id="avatar">
-				                        	<img width="120px" style="margin-top:10px;" class="img-rounded text-right preview" src="http://localhost/ewsd2016/assets/images/no-image.png"  />
+				                        	<img width="120px" style="margin-top:10px;" class="img-rounded text-right preview" src="http://localhost/library/assets/images/no-image.png"  />
 				                        </div>
 				                        <button type="button" onclick="signupForm.submit();" class="btn">Sign me up!</button>
 				                    </form>

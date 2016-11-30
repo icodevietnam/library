@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Core\Model;
 
-class Role extends Model
+class Roles extends Model
 {
 	
 	function __construct()
@@ -53,10 +53,8 @@ class Role extends Model
 		try {
 			if($code == 'admin'){
 				$query = ("SELECT * FROM ".PREFIX."role order by id desc ");
-			}else if($code == 'mkmng'){
-				$query = ("SELECT * FROM ".PREFIX."role WHERE code = 'mkcoor' OR code= 'student' order by id desc ");
-			}else {
-				$query = ("SELECT * FROM ".PREFIX."role WHERE code= 'student' order by id desc ");
+			}else{
+				$query = ("SELECT * FROM ".PREFIX."role WHERE code = 'student' order by id desc ");
 			}
 			$data = $this->db->select($query);
 		} catch (Exception $e) {

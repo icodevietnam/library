@@ -13,7 +13,6 @@
         Url::templatePath().'css/animate.css',
         Url::templatePath().'css/bootstrap-switch.min.css',
         Url::templatePath().'css/dataTables.bootstrap.css',
-        Url::templatePath().'css/bootstrap-select.css',
         Url::templatePath().'css/datepicker.css',
         Url::templatePath().'css/style.css',
     ]);
@@ -23,7 +22,6 @@
     <?php
     Assets::js([
     Url::templatePath().'js/jquery-2.1.1.js',
-    Url::templatePath().'js/bootstrap-select.js',
     Url::templatePath().'js/bootstrap-datepicker.js',
     Url::templatePath().'js/bootstrap-switch.min.js',
     Url::templatePath().'js/moment.js',
@@ -37,18 +35,19 @@
     ]);
     ?>
 <script>
-    DIR = "/".<?php DIR ?>."/";
-    // $(document).ready(function(){
-    //     tinymce.init({
-    //         selector: ".editor",
-    //         statusbar: false,
-    //         setup: function (editor) {
-    //             editor.on('change', function () {
-    //                 tinymce.triggerSave();
-    //             });
-    //         }
-    //     });
-    // });
+    var DIR = "<?= DIR ?>";
+    var roleCode = "<?= Session::get("admin")->roleCode ?>";
+    $(document).ready(function(){
+        tinymce.init({
+            selector: ".editor",
+            statusbar: false,
+            setup: function (editor) {
+                editor.on('change', function () {
+                    tinymce.triggerSave();
+                });
+            }
+        });
+    });
 </script>
 </head>
 <body>
@@ -61,14 +60,14 @@
                     <div class="dropdown profile-element">
                         <span>
                         <img alt="image" class="img-rounded" width="40px" height="40px"
-                            src="<?php echo Session::get('admin')[0]->avatar ?>" />
+                            src="<?php echo Session::get('admin')->avatar ?>" />
                         </span> 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
                         <span class="clear">
                             <span class="block m-t-xs"> <strong
-                                    class="font-bold"><?php echo Session::get('admin')[0]->fullname ?></strong>
+                                    class="font-bold"><?php echo Session::get('admin')->fullname ?></strong>
                             </span>
-                            <span class="block m-t-xs"> <i style="font-size: " ><?= Session::get('admin')[0]->roleName ?></i>
+                            <span class="block m-t-xs"> <i style="font-size: " ><?= Session::get('admin')->roleName ?></i>
                             </span>
                             <!-- <span class="departmentCur text-muted text-xs block">Phòng: Art Director</span> -->
                         </span>
@@ -85,33 +84,38 @@
                 <li class="user <?php if($menu == 'preference') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
                     class="nav-label">Statistics & Reports</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="<?=DIR;?>admin/statistics">Statistics</a></li>
-                        <li><a href="<?=DIR;?>admin/reports">Reports</a></li>
+                        <li><a href="<?=DIR;?>admin/dashboard">Dashboard</a></li>
                     </ul>
                 </li>
                 <li class="user <?php if($menu == 'user') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
                     class="nav-label">Manage User</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="<?=DIR;?>admin/user">Manage Users</a></li>
-                        <?php if(Session::get('admin')[0]->roleCode == 'admin') {?>
+                        <?php if(Session::get('admin')->roleCode == 'admin') {?>
                         <li><a href="<?=DIR;?>admin/role">Manage Roles</a></li>
                         <?php } ?>
                     </ul>
                 </li>
-                <li class="user <?php if($menu == 'faculty') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
-                    class="nav-label">Manage Contribution</span> <span class="fa arrow"></span></a>
+                <li class="user <?php if($menu == 'library') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
+                    class="nav-label">Manage Library</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <?php if(Session::get('admin')[0]->roleCode == 'admin'  || Session::get('admin')[0]->roleCode == 'mkmng' ) {?>
-                        <li><a href="<?=DIR;?>admin/faculty">Manage Facuties</a></li>
+                        <?php if(Session::get('admin')->roleCode == 'librarian'  || Session::get('admin')->roleCode == 'mkmng' ) {?>
+                            <li><a href="<?=DIR;?>admin/country">Manage Countries</a></li>
                         <?php } ?>
-                        <?php if(Session::get('admin')[0]->roleCode == 'mkcoor'  || Session::get('admin')[0]->roleCode == 'mkmng' ) {?>
-                        <li><a href="<?=DIR;?>admin/entry">Manage Entries</a></li>
+                        <?php if(Session::get('admin')->roleCode == 'librarian'  || Session::get('admin')->roleCode == 'mkmng' ) {?>
+                            <li><a href="<?=DIR;?>admin/author">Manage Authors</a></li>
                         <?php } ?>
-                        <?php if(Session::get('admin')[0]->roleCode == 'admin') {?>
-                        <li><a href="<?=DIR;?>admin/file">Manage File</a></li>
+                        <?php if(Session::get('admin')->roleCode == 'librarian') {?>
+                            <li><a href="<?=DIR;?>admin/category">Manage Categories</a></li>
                         <?php } ?>
-                        <?php if(Session::get('admin')[0]->roleCode == 'mkcoor') {?>
-                        <li><a href="<?=DIR;?>admin/notification">Notification <span class="badge offset4" id="notiBadge"></span></a></li>
+                        <?php if(Session::get('admin')->roleCode == 'librarian') {?>
+                            <li><a href="<?=DIR;?>admin/file">Manage Book</a></li>
+                        <?php } ?>
+                        <?php if(Session::get('admin')->roleCode == 'librarian' || Session::get('admin')->roleCode == 'admin' ){?>
+                            <li><a href="<?=DIR;?>admin/file">Manage File</a></li>
+                        <?php } ?>
+                        <?php if(Session::get('admin')->roleCode == 'mkcoor') {?>
+                            <li><a href="<?=DIR;?>admin/notification">Notification <span class="badge offset4" id="notiBadge"></span></a></li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -135,7 +139,7 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li><span class="m-r-sm text-muted welcome-message">Hello,
-                    <strong><?php echo Session::get('admin')[0]->username ?></strong> ! </span></li>
+                    <strong><?php echo Session::get('admin')->username ?></strong> ! </span></li>
             <!-- <li class="dropdown"><a class="count-info"
                 href="<c:url value='/admin/viewNoti'/>"> <i class="fa fa-bell"></i> <span
                     class="label label-primary">1</span>

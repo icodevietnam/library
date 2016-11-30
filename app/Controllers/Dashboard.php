@@ -14,7 +14,6 @@ class Dashboard extends Controller {
 	public function __construct()
     {
         parent::__construct();
-        $this->generics = new \App\Models\Generics();
     }
 
     public function index(){
@@ -24,18 +23,7 @@ class Dashboard extends Controller {
     	$data['title'] = 'Statistics';
         $data['menu'] = 'preference';
     	View::renderTemplate('header', $data,TEMPLATE);
-        View::render('AdminDashboard/Statistics', $data);
-        View::renderTemplate('footer', $data,TEMPLATE);
-    }
-
-    public function reports(){
-        if(Session::get('admin') == null){
-            Url::redirect('admin/login');
-        }
-        $data['title'] = 'Reports';
-        $data['menu'] = 'preference';
-        View::renderTemplate('header', $data,TEMPLATE);
-        View::render('AdminDashboard/Reports', $data);
+        View::render('Dashboard/Dashboard', $data);
         View::renderTemplate('footer', $data,TEMPLATE);
     }
 

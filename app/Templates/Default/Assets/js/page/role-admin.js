@@ -8,17 +8,6 @@ $(function() {
 			},
 			description:{
 				required:true
-			},code :{
-				required:true,
-				remote : {
-					url : '/library/role/checkCode',
-					type : 'GET',
-					data : {
-						code : function(){
-							return $('#newItemForm .code').val();
-						}
-					}
-				}
 			}
 		},
 		messages : {
@@ -27,10 +16,6 @@ $(function() {
 			},
 			description:{
 				required:"Description is not blank"
-			},
-			code:{
-				required:"Code is not blank",
-				remote : "Code is existed"
 			}
 		},
 	});
@@ -42,8 +27,6 @@ $(function() {
 			},
 			description:{
 				required:true
-			},code :{
-				required:true
 			}
 		},
 		messages : {
@@ -52,9 +35,6 @@ $(function() {
 			},
 			description:{
 				required:"Description is not blank"
-			},
-			code:{
-				required:"Code is not blank"
 			}
 		},
 	});

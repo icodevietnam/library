@@ -11,7 +11,7 @@ $(function(){
 function displayTable(status) {
 	var dataItems = [];
 	$.ajax({
-		url : "/ewsd2016/entry/getEntryByStatus",
+		url : DIR +"entry/getEntryByStatus",
 		type : "GET",
 		dataType : "JSON",
 		data : {
@@ -24,7 +24,7 @@ function displayTable(status) {
 				dataItems.push([
 						i,
 						value.name,value.description,value.content, value.created_date,
-						"<a class='btn btn-sm btn-info' href='/ewsd2016/entry?id="+value.id+"'>View Entry</a>"]);
+						"<a class='btn btn-sm btn-info' href=DIR +'entry?id="+value.id+"'>View Entry</a>"]);
 			});
 			$('#tblEntry').dataTable({
 				"bDestroy" : true,

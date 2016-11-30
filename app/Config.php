@@ -143,7 +143,7 @@ class Config
         /**
          * Define upload image size   
          */
-        define('SIZEIMAGE', 2048000);
+        define('SIZEIMAGE', 204800000);
 
         // Limit Roles
         define ("ROLES", serialize (array ("admin", "librarian","student")));

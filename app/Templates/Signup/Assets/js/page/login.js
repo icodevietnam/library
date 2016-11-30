@@ -11,7 +11,7 @@ $(function(){
 			username:{
 				required:true,
 				remote : {
-					url : '/ewsd2016/user/checkUser',
+					url : DIR +'user/checkUser',
 					type : 'GET',
 					data : {
 						username : function(){
@@ -37,7 +37,7 @@ $(function(){
 			email :{
 				required : true,
 				remote : {
-					url : '/ewsd2016/user/checkEmail',
+					url : DIR +'user/checkEmail',
 					type : 'GET',
 					data : {
 						email : function(){
@@ -81,7 +81,7 @@ var signupForm = {
 		var formData =  new FormData(form[0]);
 		if(form.valid()){
 			$.ajax({
-			url : "/ewsd2016/user/createStudent",
+			url : DIR +"user/createStudent",
 			type : "POST",
 			data : formData,
 			contentType : false,
@@ -89,7 +89,7 @@ var signupForm = {
 			dataType : "JSON",
 			success : function(response) {
 				if(response !== null){
-					window.location = '/ewsd2016/home';
+					window.location = DIR +'home';
 				}
 			},
 		});

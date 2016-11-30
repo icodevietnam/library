@@ -6,7 +6,7 @@ $(function() {
 function displayTable2() {
 	var dataItems = [];
 	$.ajax({
-		url : "/ewsd2016/faculty/getContributorsByEachAcademicYear",
+		url : DIR +"faculty/getContributorsByEachAcademicYear",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {
@@ -44,7 +44,7 @@ function displayTable() {
 	var dataItems = [];
 	var dataPoints = [];
 	$.ajax({
-		url : "/ewsd2016/faculty/getEntriesByEachAcademicYear",
+		url : DIR +"faculty/getEntriesByEachAcademicYear",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {

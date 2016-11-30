@@ -6,7 +6,7 @@
 			oldPassword : {
 				required : true,
 				remote : {
-					url : '/ewsd2016/user/checkPassword',
+					url : DIR +'user/checkPassword',
 					type : 'GET',
 					data : {
 						oldPassword : function(){
@@ -49,7 +49,7 @@ var changePasswordForm = {
 		var formData =  new FormData(form[0]);
 		if(form.valid()){
 			$.ajax({
-				url : "/ewsd2016/user/changeMyPassword",
+				url : DIR +"user/changeMyPassword",
 				type : "POST",
 				data : formData,
 				contentType : false,

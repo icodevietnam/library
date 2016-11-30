@@ -39,7 +39,8 @@ class Login extends Controller{
     	//Save Session
     	if($admin !=null){
     		Session::set('admin',$admin);
-    		Url::redirect('admin/statistics');
+    		Url::redirect('admin/dashboard');
+            echo json_encode($admin);
     	}
     	else{
             $data['err'] = "Username and password was wrong.";
@@ -54,7 +55,7 @@ class Login extends Controller{
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $user = $this->users->login($username,md5($password));
+        $user = $this->user->login($username,md5($password));
         //Save Session
         if($user !=null){
             Session::set('student',$user);

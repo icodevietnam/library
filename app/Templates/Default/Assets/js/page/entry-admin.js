@@ -34,7 +34,7 @@ function displayTable(faculty) {
 		disabled = 'disabled';
 	}
 	$.ajax({
-		url : "/ewsd2016/entry/getFaculty",
+		url : DIR +"entry/getFaculty",
 		type : "GET",
 		dataType : "JSON",
 		data : {
@@ -88,7 +88,7 @@ function review(id){
 	$('#reviewEntry').modal('show');
 	$('#reviewEntry .file').empty();
 	$.ajax({
-		url : "/ewsd2016/entry/preReviewCode",
+		url : DIR +"entry/preReviewCode",
 		type : "GET",
 		dataType : "JSON",
 		data : {
@@ -110,7 +110,7 @@ function viewComment(id){
 	$('#viewComment').modal('show');
 	$('#viewComment .modal-body').empty();
 	$.ajax({
-		url : "/ewsd2016/comment/getByEntry",
+		url : DIR +"comment/getByEntry",
 		type : "GET",
 		dataType : "JSON",
 		data : {
@@ -143,7 +143,7 @@ function checkEntries14days(){
 
 function hideModal(){
 	$.ajax({
-			url : "/ewsd2016/entry/checkEntries14dayandUpdateStatus",
+			url : DIR +"entry/checkEntries14dayandUpdateStatus",
 			type : "GET",
 			dataType : "JSON",
 			success : function(response) {
@@ -167,7 +167,7 @@ function checkStatus(status){
 	var comment = $("#reviewEntryForm .comment").val();
 	if($("#reviewEntryForm").valid()){
 		$.ajax({
-			url : "/ewsd2016/entry/checkCode",
+			url : DIR +"entry/checkCode",
 			type : "POST",
 			dataType : "JSON",
 			data : {

@@ -14,12 +14,30 @@ $(function() {
 		getUserByRole();
   	});
 
+  	$("#newItemForm .role").on('change',function(){
+  		var selectRole = $(this).find('option:selected').html();
+  		if(selectRole === 'student'){
+  			$("#newItemForm .studentCard").parent().parent().show();
+  		}else{
+  			$("#newItemForm .studentCard").parent().parent().hide();
+  		}
+  	});	
+
+  	$("#updateItemForm .role").on('change',function(){
+  		var selectRole = $(this).find('option:selected').html();
+  		if(selectRole === 'student'){
+  			$("#updateItemForm .studentCard").parent().parent().show();
+  		}else{
+  			$("#updateItemForm .studentCard").parent().parent().hide();
+  		}
+  	});		
+
 	$("#newItemForm").validate({
 		rules : {
 			username:{
 				required:true,
 				remote : {
-					url : '/ewsd2016/user/checkUser',
+					url : DIR +'user/checkUser',
 					type : 'GET',
 					data : {
 						username : function(){
@@ -42,10 +60,23 @@ $(function() {
 			birthDate:{
 				required : true
 			},
+			studentCard : {
+				required : true,
+				maxlength : 14,
+				remote : {
+					url : DIR +'user/checkStudentCard',
+					type : 'GET',
+					data : {
+						studentCard : function(){
+							return $('#newItemForm .studentCard').val();
+						}
+					}
+				}
+			},
 			email :{
 				required : true,
 				remote : {
-					url : '/ewsd2016/user/checkEmail',
+					url : DIR +'user/checkEmail',
 					type : 'GET',
 					data : {
 						email : function(){
@@ -74,6 +105,11 @@ $(function() {
 			birthDate:{
 				required : "Birth date is not blank"
 			},
+			studentCard : {
+				required : "Student Card is not blank",
+				maxlength : "Student Card have 14 characters",
+				remote : "Student Card is existed"
+			},
 			email :{
 				required : "Email is not blank",
 				remote : "Email is existed"
@@ -95,6 +131,9 @@ $(function() {
 			},
 			birthDate:{
 				required : true
+			},studentCard : {
+				required : true,
+				maxlength : 14
 			},
 			email :{
 				required : true
@@ -113,6 +152,9 @@ $(function() {
 			},
 			birthDate:{
 				required : "Birth date is not blank"
+			},studentCard : {
+				required : "Student Card is not blank",
+				maxlength : "Student Card have 14 characters",
 			},
 			email :{
 				required : "Email is not blank",
@@ -128,7 +170,7 @@ function getRole(id) {
 	}
 	else{
 		$.ajax({
-			url : "/ewsd2016/role/get",
+			url : DIR +"role/get",
 			type : "GET",
 			data : {
 				itemId : id
@@ -158,7 +200,7 @@ function displayTable() {
 	var dataItems = [];
 	var code = $(".chooseRole").find("option:selected").val();
 	$.ajax({
-		url : "/ewsd2016/user/getUserByCode",
+		url : DIR +"user/getUserByCode",
 		type : "GET",
 		dataType : "JSON",
 		data : {
@@ -170,7 +212,7 @@ function displayTable() {
 				i++;
 				dataItems.push([
 						i,
-						value.username,value.fullname,value.email,getRole(value.role),
+						value.username,value.fullname,value.studentCard,value.email,getRole(value.role),
 						"<img alt='image' class='img-rounded' width='60px' src='"
                             + value.avatar + "' />",
 						"<button class='btn btn-sm btn-primary' onclick='getItem("
@@ -194,6 +236,8 @@ function displayTable() {
 				}, {
 					"sTitle" : "Full Name"
 				}, {
+					"sTitle" : "Student Card"
+				}, {
 					"sTitle" : "Email"
 				}, {
 					"sTitle" : "Role"
@@ -211,7 +255,7 @@ function displayTable() {
 
 function getItem(id) {
 	$.ajax({
-		url : "/ewsd2016/user/get",
+		url : DIR +"user/get",
 		type : "GET",
 		data : {
 			itemId : id
@@ -227,8 +271,9 @@ function getItem(id) {
 				var date = moment(value.birthdate).format('MM/DD/YYYY');
 				$("#updateItemForm .birthDate").val(date);
 				$("#updateItemForm .birthDate").attr('data-date',date);
+				//$("#updateItemForm .studentCard").val(studentCard);
 				$("#updateItemForm .email").val(value.email);
-				$('#updateItemForm .role').selectpicker('val',value.role);
+				$('#updateItemForm .role').val(value.role);
 				$('.preview2').attr('src', value.avatar);
 				if(value.role == null){
 					$('#roleCombobox').hide();
@@ -249,7 +294,7 @@ function getItem(id) {
 function deleteItem(id) {
 	if (confirm("Are you sure you want to proceed?") == true) {
 		$.ajax({
-			url : "/ewsd2016/user/delete",
+			url : DIR +"user/delete",
 			type : "POST",
 			data : {
 				itemId : id
@@ -269,7 +314,7 @@ function update() {
 	var formData =  new FormData(form[0]);
 	if(form.valid()){
 		$.ajax({
-			url : "/ewsd2016/user/update",
+			url : DIR +"user/update",
 			type : "POST",
 			data : formData,
 			contentType : false,
@@ -297,7 +342,7 @@ function insertItem() {
 	var formData =  new FormData(form[0]);
 	if(form.valid()){
 		$.ajax({
-			url : "/ewsd2016/user/add",
+			url : DIR +"user/add",
 			type : "POST",
 			data : formData,
 			contentType : false,

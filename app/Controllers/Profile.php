@@ -21,7 +21,7 @@ class Profile extends Controller {
         if(Session::get('admin') == null){
             Url::redirect('admin/login');
         }
-        $id = Session::get('admin')[0]->id;
+        $id = Session::get('admin')->id;
     	$data['title'] = 'Profile';
         $data['user'] = $this->users->get($id);
     	View::renderTemplate('header', $data);
@@ -34,7 +34,7 @@ class Profile extends Controller {
             Url::redirect('admin/login');
         }
         $data['title'] = 'Change Password';
-        $id = Session::get('admin')[0]->id;
+        $id = Session::get('admin')->id;
         $data['user'] = $this->users->get($id);
         View::renderTemplate('header', $data);
         View::render('Profile/ChangePassword', $data);

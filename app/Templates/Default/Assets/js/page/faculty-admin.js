@@ -38,7 +38,7 @@ $(function() {
 			},
 			code :{
 				remote : {
-					url : '/ewsd2016/faculty/checkCode',
+					url : DIR +'faculty/checkCode',
 					type : 'GET',
 					data : {
 						code : function(){
@@ -71,7 +71,7 @@ $(function() {
 			},
 			code :{
 				remote : {
-					url : '/ewsd2016/faculty/checkCode',
+					url : DIR +'faculty/checkCode',
 					type : 'GET',
 					data : {
 						code : function(){
@@ -98,7 +98,7 @@ $(function() {
 function displayTable() {
 	var dataItems = [];
 	$.ajax({
-		url : "/ewsd2016/faculty/getAll",
+		url : DIR +"faculty/getAll",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {
@@ -148,7 +148,7 @@ function displayTable() {
 
 function getItem(id) {
 	$.ajax({
-		url : "/ewsd2016/faculty/get",
+		url : DIR +"faculty/get",
 		type : "GET",
 		data : {
 			itemId : id
@@ -176,7 +176,7 @@ function getItem(id) {
 function deleteItem(id) {
 	if (confirm("Are you sure you want to proceed?") == true) {
 		$.ajax({
-			url : "/ewsd2016/faculty/delete",
+			url : DIR +"faculty/delete",
 			type : "POST",
 			data : {
 				itemId : id
@@ -199,7 +199,7 @@ function update() {
 	var formData =  new FormData(form[0]);
 	if(form.valid()){
 		$.ajax({
-			url : "/ewsd2016/faculty/update",
+			url : DIR +"faculty/update",
 			type : "POST",
 			data : formData,
 			contentType : false,
@@ -227,7 +227,7 @@ function insertItem() {
 	var formData =  new FormData(form[0]);
 	if(form.valid()){
 		$.ajax({
-			url : "/ewsd2016/faculty/add",
+			url : DIR +"faculty/add",
 			type : "POST",
 			data : formData,
 			contentType : false,
@@ -249,7 +249,7 @@ function insertItem() {
 function getUser(id) {
 	var name = '';
 	$.ajax({
-			url : "/ewsd2016/user/get",
+			url : DIR +"user/get",
 			type : "GET",
 			data : {
 				itemId : id
@@ -301,7 +301,7 @@ function previewImage2(input){
 
 function reloadMkcoor(){
 	$.ajax({
-			url : "/ewsd2016/user/reloadMkcoor",
+			url : DIR +"user/reloadMkcoor",
 			type : "GET",
 			dataType : "JSON",
 			success : function(response) {

@@ -46,7 +46,7 @@
 						<div class="col-sm-10">
 							<select class="code form-control" name="code">
 								<?php 
-									foreach ($roleArr as $value) { ?>
+									foreach ($rolesArr as $value) { ?>
 										<option value="<?= $value?>" ><?= $value?></option>
 								<?php } ?>
 							</select>
@@ -93,7 +93,7 @@
 									<div class="col-sm-10">
 										<select class="code form-control" name="code">
 											<?php 
-											foreach ($roleArr as $value) { ?>
+											foreach ($rolesArr as $value) { ?>
 												<option value="<?= $value ?>" > <?=$value?> </option>
 											<?php } ?>
 										</select>

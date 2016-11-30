@@ -56,7 +56,7 @@ var createEntryForm = {
 		var formData =  new FormData(form[0]);
 		if(form.valid()){
 			$.ajax({
-			url : "/ewsd2016/entry/add",
+			url : DIR +"entry/add",
 			type : "POST",
 			data : formData,
 			contentType : false,
@@ -77,7 +77,7 @@ var createEntryForm = {
 		var form = $('#createEntryForm');
 		var formData =  new FormData(form[0]);
 		$.ajax({
-			url : "/ewsd2016/file/checkDocument",
+			url : DIR +"file/checkDocument",
 			type : "POST",
 			data : formData,
 			contentType : false,
@@ -102,7 +102,7 @@ var createEntryForm = {
 		var form = $('#createEntryForm');
 		var formData =  new FormData(form[0]);
 		$.ajax({
-			url : "/ewsd2016/file/checkImage",
+			url : DIR +"file/checkImage",
 			type : "POST",
 			data : formData,
 			contentType : false,

@@ -9,9 +9,12 @@
 }
 
 html {
-  background: #95a5a6;
-  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_embroidery.png);
+  background: url(/library/assets/img/harvard.jpg) no-repeat center center fixed;
   font-family: 'Helvetica Neue', Arial, Sans-Serif;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 html .login-wrap {
   position: relative;

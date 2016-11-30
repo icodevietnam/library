@@ -5,16 +5,17 @@ namespace App\Controllers;
 use Core\View;
 use Core\Controller;
 use Helpers\Session;
+use Helpers\Url;
 
 class Role extends Controller { 
 
-    private $role;
-    private $roleArr;
+    private $roless;
+    private $rolesArr;
 
     public function __construct()
     {
         parent::__construct();
-        $this->role = new \App\Models\Role();
+        $this->roles = new \App\Models\Roles();
     }
 
     public function index(){
@@ -23,15 +24,15 @@ class Role extends Controller {
         }
         $data['title'] = 'Role Management';
         $data['menu'] = 'user';
-        $roleArr = unserialize(ROLES);
-        $data['roleArr'] = $roleArr;
+        $rolesArr = unserialize(ROLES);
+        $data['rolesArr'] = $rolesArr;
         View::renderTemplate('header', $data);
         View::render('Role/Role', $data);
         View::renderTemplate('footer', $data);
     }
 
     public function getAll(){
-        echo json_encode($this->role->getAll());
+        echo json_encode($this->roles->getAll());
     }
 
     public function add(){
@@ -39,17 +40,17 @@ class Role extends Controller {
         $description = $_POST['description'];
         $code = $_POST['code'];
         $data = array('name' => $name,'description' => $description,'code' => $code);
-        echo json_encode($this->role->add($data));
+        echo json_encode($this->roles->add($data));
     }
 
     public function delete(){
         $id = $_POST['itemId'];
-        echo json_encode($this->role->delete($id));
+        echo json_encode($this->roles->delete($id));
     }
 
     public function get(){
         $id = $_GET['itemId'];
-        echo json_encode($this->role->get($id));
+        echo json_encode($this->roles->get($id));
     }
 
 
@@ -63,7 +64,12 @@ class Role extends Controller {
         $data = array('name' => $name,'description' => $description,'code' => $code);
         $where = array('id' => $id);
 
-        echo json_encode($this->role->update($data,$where));
+        echo json_encode($this->roles->update($data,$where));
+    }
+
+    public function checkCode(){
+        $code = $GET['code'];
+        echo json_encode($this->roles->checkCode($code));
     }
 
 }

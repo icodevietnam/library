@@ -8,7 +8,7 @@
 				<button data-toggle="modal" data-target="#newItem"class="btn btn-sm btn-primary">Create</button>
 				<div id='roleCombobox' class="row form-group">
 					<div class="col-sm-3">
-						<select class='selectpicker chooseRole combobox' name='role' data-style='white' data-width="100%">
+						<select class='chooseRole form-control' name='role' data-style='white' data-width="100%">
 							<?php 
 								foreach ($roles as $key => $value) {
 									echo "<option value=".$value->code.">".$value->name."</option>";
@@ -77,12 +77,18 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="name" class="col-sm-2 control-label">Student Card</label>
+						<div class="col-sm-10">
+							<input type="text" maxlength="14" class="studentCard form-control" name="studentCard" >
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="description" class="col-sm-2 control-label">Role</label>
 						<div class="col-sm-10">
-							<select class='selectpicker role combobox' name='role' data-style='white' data-width="100%">
+							<select class='role form-control' name='role' data-style='white' data-width="100%">
 								<?php 
 									foreach ($roles as $key => $value) {
-										echo "<option value=".$value->id.">".$value->name."</option>";
+										echo "<option value=".$value->id.">".$value->code."</option>";
 									}
 								?>
 							</select>
@@ -142,13 +148,19 @@
 							<input type="text" class="email form-control" name="email" >
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="name" class="col-sm-2 control-label">Student Card</label>
+						<div class="col-sm-10">
+							<input type="text" maxlength="14" class="studentCard form-control" name="studentCard" >
+						</div>
+					</div>
 					<div id='roleCombobox' class="form-group">
 						<label for="description" class="col-sm-2 control-label">Role</label>
 						<div class="col-sm-10">
-							<select class='selectpicker role combobox' name='role' data-style='white' data-width="100%">
+							<select class='role form-control' name='role' data-style='white' data-width="100%">
 								<?php 
 									foreach ($roles as $key => $value) {
-										echo "<option value=".$value->id.">".$value->name."</option>";
+										echo "<option value=".$value->id.">".$value->code."</option>";
 									}
 								?>
 							</select>

@@ -46,7 +46,7 @@
                                             <input type="file" class="image form-control" name="image" placeholder="Image..." >
                                             <label id="image-error" class="error" for="image">Image is not blank</label>
                                             <br/>
-                                            <img width="120px" style="margin-top:10px;" class="img-rounded text-right preview" src="http://localhost/ewsd2016/assets/images/no-image.png"  />
+                                            <img width="120px" style="margin-top:10px;" class="img-rounded text-right preview" src="http://localhost/library/assets/images/no-image.png"  />
                                         </div>
                                         <button type="button" onclick="createEntryForm.create();" class="btn btn-primary">Create Entry</button>
                                         <span id="successMsg" style="color: blue;" >The entry will be created and have 1 notification will send for coordinator.</span>

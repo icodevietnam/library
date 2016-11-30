@@ -63,6 +63,7 @@ Router::post('/user/update', 'App\Controllers\User@update');
 Router::get('/user/checkEmail','App\Controllers\User@checkEmailExist');
 Router::get('/user/checkUser','App\Controllers\User@checkUsernameExist');
 Router::get('/user/checkPassword','App\Controllers\User@checkPasswordExist');
+Router::get('/user/checkStudentCard','App\Controllers\User@checkStudentCardExist');
 Router::post('/user/createStudent','App\Controllers\User@createStudent');
 Router::get('/user/reloadMkcoor','App\Controllers\Faculty@reloadMkcoor');
 

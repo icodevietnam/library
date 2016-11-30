@@ -5,7 +5,7 @@ $(function() {
 function displayTable() {
 	var dataItems = [];
 	$.ajax({
-		url : "/ewsd2016/file/getAll",
+		url : DIR +"file/getAll",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {

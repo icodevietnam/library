@@ -7,7 +7,7 @@ function displayTableEntriesWithoutComment() {
 	var dataItems = [];
 	var disabled = "";
 	$.ajax({
-		url : "/ewsd2016/entry/getEntriesWithOutComment",
+		url : DIR +"entry/getEntriesWithOutComment",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {
@@ -51,7 +51,7 @@ function getEntriesWithOutComment14days() {
 	var dataItems = [];
 	var disabled = "";
 	$.ajax({
-		url : "/ewsd2016/entry/getEntriesWithOutComment14days",
+		url : DIR +"entry/getEntriesWithOutComment14days",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {

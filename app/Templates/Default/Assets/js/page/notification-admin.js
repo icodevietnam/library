@@ -5,7 +5,7 @@ $(function() {
 function displayTable() {
 	var dataItems = [];
 	$.ajax({
-		url : "/ewsd2016/notification/getAll",
+		url : DIR +"notification/getAll",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {
@@ -47,7 +47,7 @@ function displayTable() {
 
 function get(id){
 $.ajax({
-		url : "/ewsd2016/notification/get",
+		url : DIR +"notification/get",
 		type : "GET",
 		data : {
 			itemId : id
@@ -72,7 +72,7 @@ $.ajax({
 function read(){
 	var id = $("#notiForm .notiId").html();
 	$.ajax({
-			url : "/ewsd2016/notification/read",
+			url : DIR +"notification/read",
 			type : "POST",
 			data : {
 				id : id
