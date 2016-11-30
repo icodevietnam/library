@@ -210,17 +210,30 @@ function displayTable() {
 			var i = 0;
 			$.each(response, function(key, value) {
 				i++;
-				dataItems.push([
-						i,
-						value.username,value.fullname,value.studentCard,value.email,getRole(value.role),
-						"<img alt='image' class='img-rounded' width='60px' src='"
-                            + value.avatar + "' />",
-						"<button class='btn btn-sm btn-primary' onclick='getItem("
-								+ value.id + ");' >Edit</button>",
-						"<button class='btn btn-sm btn-danger' onclick='deleteItem("
-								+ value.id + ");'>Delete</button>" ]);
-			});
-			$('#tblItems').dataTable({
+				if(code === 'student'){
+					dataItems.push([
+							i,
+							value.username,value.fullname,value.studentCard,value.email,getRole(value.role),
+							"<img alt='image' class='img-rounded' width='60px' src='"
+	                            + value.avatar + "' />",
+							"<button class='btn btn-sm btn-primary' onclick='getItem("
+									+ value.id + ");' >Edit</button>",
+							"<button class='btn btn-sm btn-danger' onclick='deleteItem("
+									+ value.id + ");'>Delete</button>" ]);
+				}else{
+					dataItems.push([
+							i,
+							value.username,value.fullname,value.email,getRole(value.role),
+							"<img alt='image' class='img-rounded' width='60px' src='"
+	                            + value.avatar + "' />",
+							"<button class='btn btn-sm btn-primary' onclick='getItem("
+									+ value.id + ");' >Edit</button>",
+							"<button class='btn btn-sm btn-danger' onclick='deleteItem("
+									+ value.id + ");'>Delete</button>" ]);
+				}
+				});
+			if(code === 'student'){
+				$('#tblItems').dataTable({
 				"bDestroy" : true,
 				"bSort" : true,
 				"bFilter" : true,
@@ -249,6 +262,35 @@ function displayTable() {
 					"sTitle" : "Delete"
 				} ]
 			});
+			}else{
+				$('#tblItems').dataTable({
+				"bDestroy" : true,
+				"bSort" : true,
+				"bFilter" : true,
+				"bLengthChange" : true,
+				"bPaginate" : true,
+				"sDom" : '<"top">rt<"bottom"flp><"clear">',
+				"aaData" : dataItems,
+				"aaSorting" : [],
+				"aoColumns" : [ {
+					"sTitle" : "No"
+				}, {
+					"sTitle" : "Username"
+				}, {
+					"sTitle" : "Full Name"
+				}, {
+					"sTitle" : "Email"
+				}, {
+					"sTitle" : "Role"
+				}, {
+					"sTitle" : "Avatar"
+				}, {
+					"sTitle" : "Edit"
+				}, {
+					"sTitle" : "Delete"
+				} ]
+				});
+			}
 		}
 	});
 }
@@ -324,13 +366,13 @@ function update() {
 			},
 			complete:function(){
 				displayTable();
-				$("#updateItemForm .id").val(" ");
-				$("#updateItemForm .username").val(" ");
-				$("#updateItemForm .password").val(" ");
-				$("#updateItemForm .confirmPassword").val(" ");
-				$("#updateItemForm .fullName").val(" ");
-				$("#updateItemForm .birthDate").val(" ");
-				$("#updateItemForm .email").val(" ");
+				$("#updateItemForm .id").val("");
+				$("#updateItemForm .username").val("");
+				$("#updateItemForm .password").val("");
+				$("#updateItemForm .confirmPassword").val("");
+				$("#updateItemForm .fullName").val("");
+				$("#updateItemForm .birthDate").val("");
+				$("#updateItemForm .email").val("");
 				$("#updateItem").modal("hide");
 			}
 		});
@@ -352,12 +394,12 @@ function insertItem() {
 			},
 			complete : function(){
 				displayTable();
-				$("#newItemForm .username").val(" ");
-				$("#newItemForm .password").val(" ");
-				$("#newItemForm .confirmPassword").val(" ");
-				$("#newItemForm .fullName").val(" ");
-				$("#newItemForm .birthDate").val(" ");
-				$("#newItemForm .email").val(" ");
+				$("#newItemForm .username").val("");
+				$("#newItemForm .password").val("");
+				$("#newItemForm .confirmPassword").val("");
+				$("#newItemForm .fullName").val("");
+				$("#newItemForm .birthDate").val("");
+				$("#newItemForm .email").val("");
 				$("#newItem").modal("hide");
 			}
 		});

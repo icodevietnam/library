@@ -20,7 +20,7 @@ class Dashboard extends Controller {
         if(Session::get('admin') == null){
             Url::redirect('admin/login');
         }
-    	$data['title'] = 'Statistics';
+    	$data['title'] = 'Dashboard';
         $data['menu'] = 'preference';
     	View::renderTemplate('header', $data,TEMPLATE);
         View::render('Dashboard/Dashboard', $data);
