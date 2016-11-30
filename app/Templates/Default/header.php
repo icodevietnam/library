@@ -99,10 +99,10 @@
                 <li class="user <?php if($menu == 'library') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
                     class="nav-label">Manage Library</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <?php if(Session::get('admin')->roleCode == 'librarian'  || Session::get('admin')->roleCode == 'mkmng' ) {?>
+                        <?php if(Session::get('admin')->roleCode == 'librarian' ) {?>
                             <li><a href="<?=DIR;?>admin/country">Manage Countries</a></li>
                         <?php } ?>
-                        <?php if(Session::get('admin')->roleCode == 'librarian'  || Session::get('admin')->roleCode == 'mkmng' ) {?>
+                        <?php if(Session::get('admin')->roleCode == 'librarian') {?>
                             <li><a href="<?=DIR;?>admin/author">Manage Authors</a></li>
                         <?php } ?>
                         <?php if(Session::get('admin')->roleCode == 'librarian') {?>
@@ -113,9 +113,6 @@
                         <?php } ?>
                         <?php if(Session::get('admin')->roleCode == 'librarian' || Session::get('admin')->roleCode == 'admin' ){?>
                             <li><a href="<?=DIR;?>admin/file">Manage File</a></li>
-                        <?php } ?>
-                        <?php if(Session::get('admin')->roleCode == 'mkcoor') {?>
-                            <li><a href="<?=DIR;?>admin/notification">Notification <span class="badge offset4" id="notiBadge"></span></a></li>
                         <?php } ?>
                     </ul>
                 </li>

@@ -7,9 +7,7 @@ use Core\Controller;
 use Helpers\Session;
 use Helpers\Url;
 
-class Dashboard extends Controller {	
-
-    private $generics;
+class Category extends Controller {	
 
 	public function __construct()
     {
@@ -20,10 +18,10 @@ class Dashboard extends Controller {
         if(Session::get('admin') == null){
             Url::redirect('admin/login');
         }
-    	$data['title'] = 'Dashboard';
-        $data['menu'] = 'preference';
+    	$data['title'] = 'Category';
+        $data['menu'] = 'library';
     	View::renderTemplate('header', $data);
-        View::render('AdminDashboard/Dashboard', $data);
+        View::render('Category/Category', $data);
         View::renderTemplate('footer', $data);
     }
 

@@ -15,8 +15,12 @@ Router::any('/admin/user', 'App\Controllers\User@index');
 Router::any('/admin/role', 'App\Controllers\Role@index');
 
 Router::any('/admin','App\Controllers\Dashboard@index');
-Router::any('/admin/','App\Controllers\Dashboard@index');
+Router::any('/admin/dashboard','App\Controllers\Dashboard@index');
 Router::get('/admin/profile', 'App\Controllers\Profile@profile');
+Router::get('/admin/country', 'App\Controllers\Country@index');
+Router::get('/admin/author', 'App\Controllers\Author@index');
+Router::get('/admin/category', 'App\Controllers\Category@index');
+Router::get('/admin/author', 'App\Controllers\Author@index');
 Router::get('/admin/change-password', 'App\Controllers\Profile@changePassword');
 Router::post('/user/change-profile','App\Controllers\Profile@updateProfile');
 Router::post('/user/changeMyPassword','App\Controllers\Profile@changeMyPassword');
