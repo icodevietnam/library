@@ -1,60 +1,62 @@
 $(function() {
 	displayTable();
-
-	$("#newItemForm .image").change(function(){
-    	previewAudio(this);
-	});
-
-	$("#updateItemForm .image").change(function(){
-    	previewAudio2(this);
-	});
 	
 	$("#newItemForm").validate({
 		rules : {
-			title:{
+			name:{
 				required:true
 			},
 			description:{
 				required:true
 			},
-			content :{
-				required: true
+			code : {
+				required : true,
+				remote : {
+					url : DIR +'category/checkCode',
+					type : 'GET',
+					data : {
+						code : function(){
+							return $('#newItemForm .code').val();
+						}
+					}
+				}
 			}
 		},
 		messages : {
-			title:{
-				required:"Title is not blank"
+			name:{
+				required:"Name is not blank"
 			},
 			description:{
 				required:"Description is not blank"
 			},
-			content :{
-				required :"Content is not blank"
+			code : {
+				required : "Code is not blank",
+				remote :  "Code is existed"
 			}
 		},
 	});
 	
 	$("#updateItemForm").validate({
 		rules : {
-			title:{
+			name:{
 				required:true
 			},
 			description:{
 				required:true
 			},
-			content :{
-				required: true
+			code : {
+				required : true
 			}
 		},
 		messages : {
-			title:{
-				required:"Title is not blank"
+			name:{
+				required:"Name is not blank"
 			},
 			description:{
 				required:"Description is not blank"
 			},
-			content :{
-				required: "Content is not blank"
+			code : {
+				required : "Code is not blank"
 			}
 		},
 	});
@@ -63,7 +65,7 @@ $(function() {
 function displayTable() {
 	var dataItems = [];
 	$.ajax({
-		url : "/cat-prj/news/getAll",
+		url : DIR +"category/getAll",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {
@@ -72,8 +74,7 @@ function displayTable() {
 				i++;
 				dataItems.push([
 						i,
-						value.title,"<img alt='image' class='img-rounded' width='60px' src='"
-                            + value.image + "' />",value.content,
+						value.name,value.description,value.code,
 						"<button class='btn btn-sm btn-primary' onclick='getItem("
 								+ value.id + ");' >Edit</button>",
 						"<button class='btn btn-sm btn-danger' onclick='deleteItem("
@@ -91,11 +92,11 @@ function displayTable() {
 				"aoColumns" : [ {
 					"sTitle" : "No"
 				}, {
-					"sTitle" : "Title"
+					"sTitle" : "Name"
 				}, {
-					"sTitle" : "Image"
+					"sTitle" : "Description"
 				}, {
-					"sTitle" : "Content"
+					"sTitle" : "Code"
 				}, {
 					"sTitle" : "Edit"
 				}, {
@@ -108,7 +109,7 @@ function displayTable() {
 
 function getItem(id) {
 	$.ajax({
-		url : "/cat-prj/news/get",
+		url : DIR +"category/get",
 		type : "GET",
 		data : {
 			itemId : id
@@ -117,10 +118,9 @@ function getItem(id) {
 		success : function(data) {
 			$.each(data, function(key, value) {
 				$("#updateItemForm .id").val(value.id);
-				$("#updateItemForm .title").val(value.title);
+				$("#updateItemForm .name").val(value.name);
 				$("#updateItemForm .description").val(value.description);
-				tinyMCE.activeEditor.setContent(value.content);
-				$('.preview2').attr('src', value.image);
+				$("#updateItemForm .code").val(value.code);
 			})	
 		},
 		complete : function(){
@@ -135,7 +135,7 @@ function getItem(id) {
 function deleteItem(id) {
 	if (confirm("Are you sure you want to proceed?") == true) {
 		$.ajax({
-			url : "/cat-prj/news/delete",
+			url : DIR +"category/delete",
 			type : "POST",
 			data : {
 				itemId : id
@@ -151,77 +151,58 @@ function deleteItem(id) {
 }
 
 function update() {
-	var form = $('#updateItemForm');
-	var formData =  new FormData(form[0]);
-	if(form.valid()){
+	if($("#updateItemForm").valid()){
+		var id = $("#updateItemForm .id").val();
+		var name = $("#updateItemForm .name").val();
+		var description = $("#updateItemForm .description").val();
+		var code = $("#updateItemForm .code").val();
 		$.ajax({
-			url : "/cat-prj/news/update",
+			url : DIR +"category/update",
 			type : "POST",
-			data : formData,
-			contentType : false,
-			processData : false,
+			data : {
+				id : id,
+				name : name,
+				description : description,
+				code : code
+			},
 			dataType : "JSON",
 			success : function(response) {
 			},
 			complete:function(){
 				displayTable();
-				$("#updateItemForm .id").val(" ");
-				$("#updateItemForm .title").val(" ");
-				$("#updateItemForm .description").val(" ");
-				$("#updateItemForm .content").val(" ");
+				$("#updateItemForm .id").val("");
+				$("#updateItemForm .name").val("");
+				$("#updateItemForm .description").val("");
+				$("#updateItemForm .code").val("");
 				$("#updateItem").modal("hide");
-			},
-			error: function (request, status, error) {
-        		alert(request.responseText);
-    		}
+			}
 		});
 	}
 }
 
 function insertItem() {
-	var form = $('#newItemForm');
-	var formData =  new FormData(form[0]);
-	if(form.valid()){
+	if($("#newItemForm").valid()){
+		var name = $("#newItemForm .name").val();
+		var description = $("#newItemForm .description").val();
+		var code = $("#newItemForm .code").val();
 		$.ajax({
-			url : "/cat-prj/news/add",
+			url : DIR +"category/add",
 			type : "POST",
-			data : formData,
-			contentType : false,
-			processData : false,
+			data : {
+				name : name,
+				description : description,
+				code : code
+			},
 			dataType : "JSON",
 			success : function(response) {
 			},
 			complete : function(){
 				displayTable();
 				$("#newItem").modal("hide");
-				$("#newItemForm .title").val(" ");
-				$("#newItemForm .description").val(" ");
-				$("#newItemForm .content").val(" ");
+				$("#newItemForm .name").val("");
+				$("#newItemForm .description").val("");
+				$("#newItemForm .code").val("");
 			}
 		});
 	}
-}
-
-function previewImage(input){
-	if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('.preview1').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-function previewImage2(input){
-	if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('.preview2').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
 }

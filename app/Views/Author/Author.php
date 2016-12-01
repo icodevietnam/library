@@ -44,12 +44,7 @@
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Code</label>
 						<div class="col-sm-10">
-							<select class="code form-control" name="code">
-								<?php 
-									foreach ($rolesArr as $value) { ?>
-										<option value="<?= $value?>" ><?= $value?></option>
-								<?php } ?>
-							</select>
+
 						</div>
 					</div>
 					</div>
@@ -83,20 +78,15 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="name" class="col-sm-2 control-label">Description</label>
+									<label for="name" class="col-sm-2 control-label">Full Name</label>
 									<div class="col-sm-10">
-										<input type="text" class="description form-control" name="description" >
+										<input type="text" class="fullName form-control" name="fullName" >
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="code" class="col-sm-2 control-label">Code</label>
+									<label for="name" class="col-sm-2 control-label">Birth Date</label>
 									<div class="col-sm-10">
-										<select class="code form-control" name="code">
-											<?php 
-											foreach ($rolesArr as $value) { ?>
-												<option value="<?= $value ?>" > <?=$value?> </option>
-											<?php } ?>
-										</select>
+										<input type="text" class="birthDate form-control" name="birthDate" >
 									</div>
 								</div>
 				</div>
@@ -111,6 +101,6 @@
 
 <?php
 Assets::js([
-	Url::templatePath().'js/page/role-admin.js'
+	Url::templatePath().'js/page/author-admin.js'
 ]);
 ?>

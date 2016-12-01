@@ -46,6 +46,29 @@ Router::get('/role/get', 'App\Controllers\Role@get');
 Router::get('/role/checkCode', 'App\Controllers\Role@checkCode');
 Router::post('/role/update', 'App\Controllers\Role@update');
 
+//Country Admin Action
+Router::get('/country/getAll', 'App\Controllers\Country@getAll');
+Router::post('/country/add', 'App\Controllers\Country@add');
+Router::post('/country/delete', 'App\Controllers\Country@delete');
+Router::get('/country/get', 'App\Controllers\Country@get');
+Router::get('/country/checkCode', 'App\Controllers\Country@checkCode');
+Router::post('/country/update', 'App\Controllers\Country@update');
+
+//Category Admin Action
+Router::get('/category/getAll', 'App\Controllers\Category@getAll');
+Router::post('/category/add', 'App\Controllers\Category@add');
+Router::post('/category/delete', 'App\Controllers\Category@delete');
+Router::get('/category/get', 'App\Controllers\Category@get');
+Router::get('/category/checkCode', 'App\Controllers\Category@checkCode');
+Router::post('/category/update', 'App\Controllers\Category@update');
+
+//Category Admin Action
+Router::get('/author/getAll', 'App\Controllers\Author@getAll');
+Router::post('/author/add', 'App\Controllers\Author@add');
+Router::post('/author/delete', 'App\Controllers\Author@delete');
+Router::get('/author/get', 'App\Controllers\Author@get');
+Router::post('/author/update', 'App\Controllers\Author@update');
+
 
 //File Action
 Router::post('/file/checkDocument', 'App\Controllers\File@checkDocument');

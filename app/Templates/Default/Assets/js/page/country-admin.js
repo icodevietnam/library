@@ -8,6 +8,18 @@ $(function() {
 			},
 			description:{
 				required:true
+			},
+			code : {
+				required : true,
+				remote : {
+					url : DIR +'country/checkCode',
+					type : 'GET',
+					data : {
+						code : function(){
+							return $('#newItemForm .code').val();
+						}
+					}
+				}
 			}
 		},
 		messages : {
@@ -16,6 +28,10 @@ $(function() {
 			},
 			description:{
 				required:"Description is not blank"
+			},
+			code : {
+				required : "Code is not blank",
+				remote :  "Code is existed"
 			}
 		},
 	});
@@ -27,6 +43,9 @@ $(function() {
 			},
 			description:{
 				required:true
+			},
+			code : {
+				required : true
 			}
 		},
 		messages : {
@@ -35,6 +54,9 @@ $(function() {
 			},
 			description:{
 				required:"Description is not blank"
+			},
+			code : {
+				required : "Code is not blank"
 			}
 		},
 	});
@@ -43,7 +65,7 @@ $(function() {
 function displayTable() {
 	var dataItems = [];
 	$.ajax({
-		url : "/cat-prj/level/getAll",
+		url : DIR +"country/getAll",
 		type : "GET",
 		dataType : "JSON",
 		success : function(response) {
@@ -52,7 +74,7 @@ function displayTable() {
 				i++;
 				dataItems.push([
 						i,
-						value.name,value.description,
+						value.name,value.description,value.code,
 						"<button class='btn btn-sm btn-primary' onclick='getItem("
 								+ value.id + ");' >Edit</button>",
 						"<button class='btn btn-sm btn-danger' onclick='deleteItem("
@@ -74,6 +96,8 @@ function displayTable() {
 				}, {
 					"sTitle" : "Description"
 				}, {
+					"sTitle" : "Code"
+				}, {
 					"sTitle" : "Edit"
 				}, {
 					"sTitle" : "Delete"
@@ -85,7 +109,7 @@ function displayTable() {
 
 function getItem(id) {
 	$.ajax({
-		url : "/cat-prj/level/get",
+		url : DIR +"country/get",
 		type : "GET",
 		data : {
 			itemId : id
@@ -96,6 +120,7 @@ function getItem(id) {
 				$("#updateItemForm .id").val(value.id);
 				$("#updateItemForm .name").val(value.name);
 				$("#updateItemForm .description").val(value.description);
+				$("#updateItemForm .code").val(value.code);
 			})	
 		},
 		complete : function(){
@@ -110,7 +135,7 @@ function getItem(id) {
 function deleteItem(id) {
 	if (confirm("Are you sure you want to proceed?") == true) {
 		$.ajax({
-			url : "/cat-prj/level/delete",
+			url : DIR +"country/delete",
 			type : "POST",
 			data : {
 				itemId : id
@@ -130,22 +155,25 @@ function update() {
 		var id = $("#updateItemForm .id").val();
 		var name = $("#updateItemForm .name").val();
 		var description = $("#updateItemForm .description").val();
+		var code = $("#updateItemForm .code").val();
 		$.ajax({
-			url : "/cat-prj/level/update",
+			url : DIR +"country/update",
 			type : "POST",
 			data : {
 				id : id,
 				name : name,
-				description : description
+				description : description,
+				code : code
 			},
 			dataType : "JSON",
 			success : function(response) {
 			},
 			complete:function(){
 				displayTable();
-				$("#updateItemForm .id").val(" ");
-				$("#updateItemForm .name").val(" ");
-				$("#updateItemForm .description").val(" ");
+				$("#updateItemForm .id").val("");
+				$("#updateItemForm .name").val("");
+				$("#updateItemForm .description").val("");
+				$("#updateItemForm .code").val("");
 				$("#updateItem").modal("hide");
 			}
 		});
@@ -156,12 +184,14 @@ function insertItem() {
 	if($("#newItemForm").valid()){
 		var name = $("#newItemForm .name").val();
 		var description = $("#newItemForm .description").val();
+		var code = $("#newItemForm .code").val();
 		$.ajax({
-			url : "/cat-prj/level/add",
+			url : DIR +"country/add",
 			type : "POST",
 			data : {
 				name : name,
-				description : description
+				description : description,
+				code : code
 			},
 			dataType : "JSON",
 			success : function(response) {
@@ -169,8 +199,9 @@ function insertItem() {
 			complete : function(){
 				displayTable();
 				$("#newItem").modal("hide");
-				$("#newItemForm .name").val(" ");
-				$("#newItemForm .description").val(" ");
+				$("#newItemForm .name").val("");
+				$("#newItemForm .description").val("");
+				$("#newItemForm .code").val("");
 			}
 		});
 	}

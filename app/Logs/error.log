@@ -1,18 +1,103 @@
-2016-11-30 20:30PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Country/Country.php on line 49
+Exception information:
 
-2016-11-30 20:36PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Category/Category.php on line 50
+           Date: Dec 01, 2016 5:06AM
 
-2016-11-30 20:39PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Category/Category.php on line 50
+           Message: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'code' cannot be null
 
-2016-11-30 20:39PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Author/Author.php on line 49
+           Code: 23000
 
-2016-11-30 20:40PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Author/Author.php on line 49
+           File: /Applications/XAMPP/xamppfiles/htdocs/library/system/Helpers/Database.php
 
-2016-11-30 20:40PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Author/Author.php on line 49
+           Line: 123
 
-2016-11-30 20:40PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Author/Author.php on line 49
+           Stack trace:
 
-2016-11-30 20:42PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Author/Author.php on line 49
+           #0 /Applications/XAMPP/xamppfiles/htdocs/library/system/Helpers/Database.php(123): PDOStatement->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/library/app/Models/Countries.php(26): Helpers\Database->insert('country', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/library/app/Controllers/Country.php(40): App\Models\Countries->add(Array)
+#3 [internal function]: App\Controllers\Country->add()
+#4 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(193): call_user_func_array(Array, Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(224): Core\Router->invokeController('App\\Controllers...', 'add', Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(261): Core\Router->invokeObject('App\\Controllers...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/library/app/Routes.php(94): Core\Router->dispatch()
+#8 /Applications/XAMPP/xamppfiles/htdocs/library/index.php(74): require('/Applications/X...')
+#9 {main}
 
-2016-11-30 20:42PM - Invalid argument supplied for foreach() in /opt/lampp/htdocs/library/app/Views/Country/Country.php on line 49
+           ---------
+
+Exception information:
+
+           Date: Dec 01, 2016 5:06AM
+
+           Message: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'code' cannot be null
+
+           Code: 23000
+
+           File: /Applications/XAMPP/xamppfiles/htdocs/library/system/Helpers/Database.php
+
+           Line: 123
+
+           Stack trace:
+
+           #0 /Applications/XAMPP/xamppfiles/htdocs/library/system/Helpers/Database.php(123): PDOStatement->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/library/app/Models/Countries.php(26): Helpers\Database->insert('country', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/library/app/Controllers/Country.php(40): App\Models\Countries->add(Array)
+#3 [internal function]: App\Controllers\Country->add()
+#4 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(193): call_user_func_array(Array, Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(224): Core\Router->invokeController('App\\Controllers...', 'add', Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(261): Core\Router->invokeObject('App\\Controllers...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/library/app/Routes.php(94): Core\Router->dispatch()
+#8 /Applications/XAMPP/xamppfiles/htdocs/library/index.php(74): require('/Applications/X...')
+#9 {main}
+
+           ---------
+
+Exception information:
+
+           Date: Dec 01, 2016 5:09AM
+
+           Message: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'code' cannot be null
+
+           Code: 23000
+
+           File: /Applications/XAMPP/xamppfiles/htdocs/library/system/Helpers/Database.php
+
+           Line: 123
+
+           Stack trace:
+
+           #0 /Applications/XAMPP/xamppfiles/htdocs/library/system/Helpers/Database.php(123): PDOStatement->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/library/app/Models/Countries.php(26): Helpers\Database->insert('country', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/library/app/Controllers/Country.php(40): App\Models\Countries->add(Array)
+#3 [internal function]: App\Controllers\Country->add()
+#4 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(193): call_user_func_array(Array, Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(224): Core\Router->invokeController('App\\Controllers...', 'add', Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/library/system/Core/Router.php(261): Core\Router->invokeObject('App\\Controllers...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/library/app/Routes.php(94): Core\Router->dispatch()
+#8 /Applications/XAMPP/xamppfiles/htdocs/library/index.php(74): require('/Applications/X...')
+#9 {main}
+
+           ---------
+
+2016-12-01 5:38AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:38AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:38AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:39AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:40AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:40AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:40AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:40AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:43AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:43AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
+
+2016-12-01 5:43AM - Invalid argument supplied for foreach() in /Applications/XAMPP/xamppfiles/htdocs/library/app/Views/Category/Category.php on line 50
 

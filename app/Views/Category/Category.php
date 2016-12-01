@@ -1,9 +1,8 @@
-
 <div class="row">
 	<div class="col-lg-12">
 		<div class="ibox">
 			<div class="ibox-content">
-				<a href="<?=DIR;?>admin/role" class="btn-link">
+				<a href="<?=DIR;?>admin/country" class="btn-link">
 					<h2><?= $title ?></h2>
 				</a>
 				<button data-toggle="modal" data-target="#newItem"class="btn btn-sm btn-primary">Create</button>
@@ -26,7 +25,7 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel">Add Role</h4>
+				<h4 class="modal-title" id="myModalLabel">Add Category</h4>
 			</div>
 			<form id="newItemForm" class="form-horizontal" method="POST">
 				<div class="modal-body">
@@ -45,12 +44,7 @@
 					<div class="form-group">
 						<label for="code" class="col-sm-2 control-label">Code</label>
 						<div class="col-sm-10">
-							<select class="code form-control" name="code">
-								<?php 
-									foreach ($rolesArr as $value) { ?>
-										<option value="<?= $value?>" ><?= $value?></option>
-								<?php } ?>
-							</select>
+							<input type="text" class="code form-control" name="code" >
 						</div>
 					</div>
 					</div>
@@ -72,7 +66,7 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Edit Role</h4>
+						<h4 class="modal-title" id="myModalLabel">Edit Category</h4>
 				</div>
 					<form id="updateItemForm" class="form-horizontal" method="POST">
 				<div class="modal-body">
@@ -92,12 +86,9 @@
 								<div class="form-group">
 									<label for="code" class="col-sm-2 control-label">Code</label>
 									<div class="col-sm-10">
-										<select class="code form-control" name="code">
-											<?php 
-											foreach ($rolesArr as $value) { ?>
-												<option value="<?= $value ?>" > <?=$value?> </option>
-											<?php } ?>
-										</select>
+										<div class="col-sm-10">
+											<input type="text" class="code form-control" name="code" >
+										</div>
 									</div>
 								</div>
 				</div>
@@ -112,6 +103,6 @@
 
 <?php
 Assets::js([
-	Url::templatePath().'js/page/role-admin.js'
+	Url::templatePath().'js/page/category-admin.js'
 ]);
 ?>

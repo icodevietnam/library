@@ -81,13 +81,13 @@
                     </div>
                     <div class="logo-element">IN+</div>
                 </li>
-                <li class="user <?php if($menu == 'preference') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
-                    class="nav-label">Statistics & Reports</span> <span class="fa arrow"></span></a>
+                <li class="user <?php if($menu === 'preference') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
+                    class="nav-label">Report</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="<?=DIR;?>admin/dashboard">Dashboard</a></li>
                     </ul>
                 </li>
-                <li class="user <?php if($menu == 'user') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
+                <li class="user <?php if($menu === 'user') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
                     class="nav-label">Manage User</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="<?=DIR;?>admin/user">Manage Users</a></li>
@@ -96,7 +96,7 @@
                         <?php } ?>
                     </ul>
                 </li>
-                <li class="user <?php if($menu == 'library') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
+                <li class="user <?php if($menu === 'library') echo 'active'; ?> "><a href="#"><i class="fa fa-th-large"></i> <span
                     class="nav-label">Manage Library</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <?php if(Session::get('admin')->roleCode == 'librarian' ) {?>

@@ -29,7 +29,7 @@ class File extends Controller {
             $url = "Error/NoPermission";
         }
         $data['title'] = 'File Management';
-        $data['menu'] = 'faculty';
+        $data['menu'] = 'library';
         View::renderTemplate('header', $data);
         View::render($url, $data);
         View::renderTemplate('footer', $data);
@@ -40,10 +40,6 @@ class File extends Controller {
     }
 
     public function add(){
-    	// $name = $_POST['name'];
-    	// $description = $_POST['description'];
-        // $code = $_POST['code'];
-    	// $data = array('name' => $name,'description' => $description,'code' => $code);
     	echo json_encode($this->files->add($data));
     }
 

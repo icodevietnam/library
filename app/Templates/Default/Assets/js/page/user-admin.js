@@ -198,7 +198,7 @@ function getUserByRole(){
 
 function displayTable() {
 	var dataItems = [];
-	var code = $(".chooseRole").find("option:selected").val();
+	var code = $(".chooseRole").val();	
 	$.ajax({
 		url : DIR +"user/getUserByCode",
 		type : "GET",
