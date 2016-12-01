@@ -46,15 +46,13 @@ class Profile extends Controller {
         $username = $_POST['username'];
         $fullName = $_POST['fullname'];
         $email = $_POST['email'];
-        $upload = new \Helpers\UploadCoded();
-        $avatar = $upload->upload('avatar','image');
-        $fileName = $_FILES['avatar']['name'];
-        if("" === $fileName){
-            $data = array('username' => $username,'fullname' => $fullName,'email' => $email);
+        $upload = new \Helpers\Upload();
+        $avatar = $upload->uploadFile($_FILES['avatar'],AVATAR_FOLDER);
+        if($avatar['message'] != null){
+            $data = array('username' => $username,'fullname' => $fullName,'email' => $email,'avatar' => 'http://localhost/ewsd2016/assets/images/default.png' );
         }else{
-            $data = array('username' => $username,'fullname' => $fullName,'email' => $email,'avatar' => $avatar );
+            $data = array('username' => $username,'fullname' => $fullName,'email' => $email,'avatar' => $avatar['path'] );
         }
-
         $where = array('id' => $id);
         $update = $this->users->update($data,$where);
         $admin = $this->users->get($id);

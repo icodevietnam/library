@@ -6,6 +6,7 @@ use Core\View;
 use Core\Controller;
 use Helpers\Session;
 use Helpers\Url;
+use Helpers\Upload;
 
 class File extends Controller {	
 
@@ -68,13 +69,19 @@ class File extends Controller {
     }
 
     public function checkImage(){
-    	$upload = new \Helpers\UploadCoded();
+    	$upload = new \Helpers\Upload();
     	$message = $upload->checkImage($_FILES['image']);
     	echo json_encode($message);
     }
 
+    public function checkAvatar(){
+        $upload = new \Helpers\Upload();
+        $message = $upload->checkImage($_FILES['avatar']);
+        echo json_encode($message);
+    }
+
     public function checkDocument(){
-    	$upload = new \Helpers\UploadCoded();
+    	$upload = new \Helpers\Upload();
     	$message = $upload->checkDocument($_FILES['file']);
     	echo json_encode($message);
     }

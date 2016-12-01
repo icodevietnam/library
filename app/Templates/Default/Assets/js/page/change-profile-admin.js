@@ -1,8 +1,9 @@
 $(function(){
-	var form = $("#profileForm");
+	var formName = '#profileForm';
+	var form = $(formName);
 
-	$("#profileForm .avatar").change(function(){
-    	previewImage(this);
+	$(formName + " .avatar").change(function(){
+    	checkImage(this,formName);
 	});
 
 	form.validate({
@@ -24,18 +25,6 @@ $(function(){
 		},
 	});
 });
-
-function previewImage(input){
-	if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('.preview').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
 
 function changeProfile(){
 	var form = $('#profileForm');
@@ -63,3 +52,39 @@ function changeProfile(){
 		});
 	}
 }
+
+function checkImage(input,form){
+		var formD = $(form);
+		var formData =  new FormData(formD[0]);
+		$.ajax({
+			url : DIR +"file/checkAvatar",
+			type : "POST",
+			data : formData,
+			contentType : false,
+			processData : false,
+			dataType : "JSON",
+			success : function(response) {
+				alert(response);
+				if(response === 'wrong-file' ){
+					$('#image-error').text("File belongs Document type : jpg, jpeg, png, bmp .").show().delay(5000).fadeOut();
+					$( form + ' .image').val('');
+				}
+				if(response === 'wrong-size' ){
+					$('#image-error').text("Size is larger than default size .").show().delay(5000).fadeOut();
+					$(form + ' .image').val('');
+				}
+				if(response === 'true'){
+					$('#image-error').text("File is attached.").show().delay(10000).fadeOut();
+					if (input.files && input.files[0]) {
+				        var reader = new FileReader();
+
+				        reader.onload = function (e) {
+				            $('.preview').attr('src', e.target.result);
+				        }
+
+				        reader.readAsDataURL(input.files[0]);
+   					}
+				}
+			}
+		});
+	}

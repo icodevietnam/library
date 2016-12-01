@@ -2,7 +2,7 @@
 
 namespace Helpers;
 
-class UploadCoded {
+class Upload {
 	
 	function upload($element,$filter,$size = SIZEIMAGE){
 		$message = '';
@@ -59,19 +59,33 @@ class UploadCoded {
 		return $message;
 	}
 
-	function uploadFile($element,$size = SIZEIMAGE){
-		$file = null;
+	function uploadFile($element,$folder = IMG_FOLDER,$size = SIZEIMAGE){
+		$path = ROOTDIR.'assets/'.$folder.'/';
+		$data = null;
+		$type = '';
+		if($folder === IMG_FOLDER){
+			$type = 'image';
+		}else if($folder === AVATAR_FOLDER){
+			$type = 'avatar';
+		}else{
+			$type = 'book';
+		}
 		if($element['name']){
 			if(!$element['error']){
 				$name = strtolower($element['name']);
 				$ext = end((explode(".", $name)));
 				$time = time();
 				$newName = md5($name.$time).".".$ext;
-				move_uploaded_file($element['tmp_name'], ROOTDIR.'assets/entry/'.$newName);
-				$file = array('name' => $newName, 'description' => $name, 'size' => $element['size'], 'path' => Url::entryPath().$newName,'type' => 'entry', 'ext' => $ext,  'oldname' => $name );
+				if(!file_exists($path)){
+					mkdir($path,0777,true);
+				}
+				move_uploaded_file($element['tmp_name'], $path.$newName);
+				$data = array('name' => $newName, 'description' => $name, 'size' => $element['size'], 'path' => $path.$newName,'type' => $type, 'ext' => $ext,  'oldname' => $name );
 			}
+		}else{
+			$data = array('message'=>'no-image');
 		}
-		return $file;
+		return $data ;
 	}
 
 

@@ -73,6 +73,8 @@ Router::post('/author/update', 'App\Controllers\Author@update');
 //File Action
 Router::post('/file/checkDocument', 'App\Controllers\File@checkDocument');
 Router::post('/file/checkImage', 'App\Controllers\File@checkImage');
+Router::post('/file/checkAvatar', 'App\Controllers\File@checkAvatar');
+
 //Role Admin Action
 Router::get('/file/getAll', 'App\Controllers\File@getAll');
 Router::post('/file/add', 'App\Controllers\File@add');
