@@ -124,6 +124,23 @@ class Config
          */
         define('SESSION_PREFIX', 'ewsd_');
 
+
+        /**
+         * Avatar.
+         */
+        define('AVATAR_FOLDER', 'avatar');
+
+        /**
+         * Avatar.
+         */
+        define('BOOK_FOLDER', 'book');
+
+
+        /**
+         * Avatar.
+         */
+        define('IMG_FOLDER', 'imgs');
+
         /**
          * Optionall set a site email address.
          */

@@ -18,7 +18,7 @@
 
 <div class="modal fade" id="newItem" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
@@ -30,24 +30,43 @@
 			<form id="newItemForm" class="form-horizontal" method="POST">
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Name</label>
-						<div class="col-sm-10">
-							<input type="text" class="name form-control" name="name" >
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="description" class="col-sm-2 control-label">Description</label>
-						<div class="col-sm-10">
-						<input type="text" class="description form-control" name="description" >
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="code" class="col-sm-2 control-label">Code</label>
-						<div class="col-sm-10">
-
-						</div>
-					</div>
-					</div>
+									<label for="name" class="col-sm-2 control-label">Name</label>
+									<div class="col-sm-10">
+										<input type="text" class="name form-control" name="name" >
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Full Name</label>
+									<div class="col-sm-10">
+										<input type="text" class="fullName form-control" name="fullName" >
+									</div>
+								</div>
+								<div class="form-group">
+										<label for="name" class="col-sm-2 control-label">Birthdate</label>
+										<div class="col-sm-10">
+											<input type="text" class="dateInput birthDate form-control" name="birthDate" >
+										</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Short Name</label>
+									<div class="col-sm-10">
+										<input type="text" class="shortName form-control" name="shortName" >
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Image</label>
+									<div class="col-sm-10">
+										<input type="file" class="avatar form-control" name="image" >
+										<img width="120px" class="img-rounded preview1" src="http://localhost/cat-prj/assets/images/default.png"  />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Bio</label>
+									<div class="col-sm-10">
+										<textarea class="form-control bio editor" name="bio"></textarea>
+									</div>
+								</div>
+				</div>
 				<div class="modal-footer">
 					<button type="button" onclick="insertItem();" class="btn btn-primary">Save</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -59,7 +78,7 @@
 
 <div class="modal fade" id="updateItem" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 				<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
@@ -84,9 +103,28 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="name" class="col-sm-2 control-label">Birth Date</label>
+										<label for="name" class="col-sm-2 control-label">Birthdate</label>
+										<div class="col-sm-10">
+											<input type="text" class="dateInput birthDate form-control" name="birthDate" >
+										</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Short Name</label>
 									<div class="col-sm-10">
-										<input type="text" class="birthDate form-control" name="birthDate" >
+										<input type="text" class="shortName form-control" name="shortName" >
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Image</label>
+									<div class="col-sm-10">
+										<input type="file" class="avatar form-control" name="image" >
+										<img width="120px" class="img-rounded preview1" src="http://localhost/cat-prj/assets/images/default.png"  />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Bio</label>
+									<div class="col-sm-10">
+										<textarea class="form-control bio editor" name="bio"></textarea>
 									</div>
 								</div>
 				</div>
